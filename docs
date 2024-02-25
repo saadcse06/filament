@@ -15,3 +15,8 @@ Filament Install:
 14. php artisan migrate:refresh --seed
 ---for resource--
 php artisan make:filament-resource Role
+for running generate resource:
+composer require doctrine/dbal --dev (only for filament v2)
+if there is table by following command all field will be assigned automatically
+php artisan make:filament-resource Permission --generate
+
