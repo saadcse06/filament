@@ -1,0 +1,17 @@
+Filament Install:
+1. composer create-project laravel/laravel filament
+2. enable intl extention in php.ini
+3. composer require filament/filament:"^3.2" -W
+4. php artisan filament:install --panels
+5. make db and change env file
+6. php artisan make:filament-user
+7. composer require spatie/laravel-permission
+8. php artisan vendor:publish --provider="Spatie\Permission\PermissionServiceProvider"
+9. php artisan optimize:clear
+10. php artisan migrate
+11. Add the necessary trait to your User model: use HasRoles;
+12. some code check: https://filamentphp.com/docs/3.x/panels/installation
+13. php artisan vendor:publish --tag=filament-config
+14. php artisan migrate:refresh --seed
+---for resource--
+php artisan make:filament-resource Role
