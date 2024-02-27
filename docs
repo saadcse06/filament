@@ -20,3 +20,10 @@ composer require doctrine/dbal --dev (only for filament v2)
 if there is table by following command all field will be assigned automatically
 php artisan make:filament-resource Permission --generate
 
+----make user policy---
+php artisan make:policy UserPolicy --model=User
+
+---get all access for super admin---
+https://spatie.be/index.php/docs/laravel-permission/v6/basic-usage/super-admin
+
+
