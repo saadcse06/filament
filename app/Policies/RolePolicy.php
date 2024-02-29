@@ -13,7 +13,12 @@ class RolePolicy
      */
     public function viewAny(User $user): bool
     {
-        return $user->hasRole(['Superadmin','User']);
+        //return $user->hasRole(['Superadmin','User']);
+        if($user->hasPermissionTo('View Role')){
+            return true;
+        }else{
+            return false;
+        }
     }
 
     /**
@@ -21,7 +26,11 @@ class RolePolicy
      */
     public function view(User $user, Role $model): bool
     {
-        return $user->hasRole(['Superadmin','User']);
+        if($user->hasPermissionTo('View Role')){
+            return true;
+        }else{
+            return false;
+        }
     }
 
     /**
@@ -29,7 +38,11 @@ class RolePolicy
      */
     public function create(User $user): bool
     {
-        return $user->hasRole(['Superadmin','User']);
+        if($user->hasPermissionTo('Create Role')){
+            return true;
+        }else{
+            return false;
+        }
     }
 
     /**
@@ -37,7 +50,11 @@ class RolePolicy
      */
     public function update(User $user, Role $model): bool
     {
-        return $user->hasRole(['Superadmin','User']);
+        if($user->hasPermissionTo('Edit Role')){
+            return true;
+        }else{
+            return false;
+        }
     }
 
     /**
@@ -45,7 +62,11 @@ class RolePolicy
      */
     public function delete(User $user, Role $model): bool
     {
-        return $user->hasRole(['Superadmin','User']);
+        if($user->hasPermissionTo('Delete Role')){
+            return true;
+        }else{
+            return false;
+        }
     }
 
     /**
@@ -53,7 +74,7 @@ class RolePolicy
      */
     public function restore(User $user, Role $model): bool
     {
-        return $user->hasRole(['Superadmin','User']);
+        return $user->hasRole(['Superadmin']);
     }
 
     /**
@@ -61,6 +82,6 @@ class RolePolicy
      */
     public function forceDelete(User $user, Role $model): bool
     {
-        return $user->hasRole(['Superadmin','User']);
+        return $user->hasRole(['Superadmin']);
     }
 }

@@ -1,21 +1,22 @@
 <?php
 
-namespace App\Filament\Resources\UserResource\Pages;
+namespace App\Filament\Resources\CityResource\Pages;
 
-use App\Filament\Resources\UserResource;
+use App\Filament\Resources\CityResource;
 use Filament\Actions;
 use Filament\Resources\Pages\CreateRecord;
 
-class CreateUser extends CreateRecord
+class CreateCity extends CreateRecord
 {
-    protected static string $resource = UserResource::class;
+    protected static string $resource = CityResource::class;
 
     protected function getRedirectUrl(): string
     {
         return $this->getResource()::getUrl('index');
     }
+
     protected function getCreatedNotificationTitle(): ?string
     {
-        return 'User Created';
+        return 'City Created';
     }
 }

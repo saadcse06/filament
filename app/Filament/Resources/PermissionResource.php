@@ -24,7 +24,16 @@ class PermissionResource extends Resource
     protected static ?string $navigationIcon = 'heroicon-o-key';
     protected static ?int $navigationSort = 3;
     protected static ?string $navigationGroup = 'Settings';
+    protected static ?string $recordTitleAttribute = 'name';
 
+    public static function getNavigationBadge(): ?string
+    {
+        return static::getModel()::count();
+    }
+    public static function getNavigationBadgeColor(): ?string
+    {
+        return static::getModel()::count() > 10 ? 'warning' : 'primary';
+    }
     public static function form(Form $form): Form
     {
         return $form
@@ -45,7 +54,10 @@ class PermissionResource extends Resource
         return $table
             ->columns([
                 TextColumn::make('id')->sortable()->searchable(),
-                TextColumn::make('name')->sortable()->searchable(),
+                TextColumn::make('name')
+                    ->label('Permission Name')
+                    ->sortable()
+                    ->searchable(),
                 TextColumn::make('created_at')
                 ->dateTime()
                 ->sortable()

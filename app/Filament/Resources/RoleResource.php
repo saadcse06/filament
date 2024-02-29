@@ -25,6 +25,16 @@ class RoleResource extends Resource
     protected static ?string $navigationIcon = 'heroicon-o-finger-print';
     protected static ?int $navigationSort = 2;
     protected static ?string $navigationGroup = 'Settings';
+    protected static ?string $recordTitleAttribute = 'name';
+
+    public static function getNavigationBadge(): ?string
+    {
+        return static::getModel()::count();
+    }
+    public static function getNavigationBadgeColor(): ?string
+    {
+        return static::getModel()::count() > 10 ? 'warning' : 'primary';
+    }
 
     public static function form(Form $form): Form
     {
@@ -49,7 +59,10 @@ class RoleResource extends Resource
         return $table
             ->columns([
                 TextColumn::make('id')->sortable()->searchable(),
-                TextColumn::make('name')->sortable()->searchable(),
+                TextColumn::make('name')
+                    ->label('Role Name')
+                    ->sortable()
+                    ->searchable(),
                 TextColumn::make('created_at')
                 ->dateTime()
                 ->sortable()

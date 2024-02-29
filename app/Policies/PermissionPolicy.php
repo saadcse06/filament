@@ -13,7 +13,11 @@ class PermissionPolicy
      */
     public function viewAny(User $user): bool
     {
-        return $user->hasRole(['Superadmin','User']);
+        if($user->hasPermissionTo('View Permission')){
+            return true;
+        }else{
+            return false;
+        }
     }
 
     /**
@@ -21,7 +25,11 @@ class PermissionPolicy
      */
     public function view(User $user, Permission $model): bool
     {
-        return $user->hasRole(['Superadmin','User']);
+        if($user->hasPermissionTo('View Permission')){
+            return true;
+        }else{
+            return false;
+        }
     }
 
     /**
@@ -29,7 +37,11 @@ class PermissionPolicy
      */
     public function create(User $user): bool
     {
-        return $user->hasRole(['Superadmin','User']);
+        if($user->hasPermissionTo('Create Permission')){
+            return true;
+        }else{
+            return false;
+        }
     }
 
     /**
@@ -37,12 +49,20 @@ class PermissionPolicy
      */
     public function update(User $user, Permission $model): bool
     {
-        return $user->hasRole(['Superadmin','User']);
+        if($user->hasPermissionTo('Edit Permission')){
+            return true;
+        }else{
+            return false;
+        }
     }
 
     public function delete(User $user, Permission $model): bool
     {
-        return $user->hasRole('Superadmin');
+        if($user->hasPermissionTo('Delete Permission')){
+            return true;
+        }else{
+            return false;
+        }
     }
 
     /**

@@ -19,11 +19,20 @@ for running generate resource:
 composer require doctrine/dbal --dev (only for filament v2)
 if there is table by following command all field will be assigned automatically
 php artisan make:filament-resource Permission --generate
+$ php artisan make:filament-resource Employee --generate --view
 
 ----make user policy---
 php artisan make:policy UserPolicy --model=User
 
 ---get all access for super admin---
 https://spatie.be/index.php/docs/laravel-permission/v6/basic-usage/super-admin
+--make new panel--
+php artisan make:filament-panel app
 
+--delete packeage from laravel--
+Remove declaration from file composer.json (in the "require" section)
+Remove any class aliases from file app.php
+Remove any references to the package from my code :-)
+composer update
+composer dump-autoload
 

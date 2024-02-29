@@ -26,7 +26,11 @@ class UserPolicy
      */
     public function view(User $user, User $model): bool
     {
-        return $user->hasRole('Superadmin');
+        if($user->hasPermissionTo('View User')){
+            return true;
+        }else{
+            return false;
+        }
     }
 
     /**

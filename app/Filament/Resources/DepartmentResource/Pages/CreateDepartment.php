@@ -1,21 +1,23 @@
 <?php
 
-namespace App\Filament\Resources\UserResource\Pages;
+namespace App\Filament\Resources\DepartmentResource\Pages;
 
-use App\Filament\Resources\UserResource;
+use App\Filament\Resources\DepartmentResource;
 use Filament\Actions;
 use Filament\Resources\Pages\CreateRecord;
 
-class CreateUser extends CreateRecord
+class CreateDepartment extends CreateRecord
 {
-    protected static string $resource = UserResource::class;
+    protected static string $resource = DepartmentResource::class;
 
     protected function getRedirectUrl(): string
     {
         return $this->getResource()::getUrl('index');
     }
+
     protected function getCreatedNotificationTitle(): ?string
     {
-        return 'User Created';
+        return 'Department Created';
     }
 }
+
