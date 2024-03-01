@@ -13,10 +13,13 @@ Filament Install:
 12. some code check: https://filamentphp.com/docs/3.x/panels/installation
 13. php artisan vendor:publish --tag=filament-config
 14. php artisan migrate:refresh --seed
+php artisan migrate:refresh --path="database/migrations/2024_02_28_052323_create_employees_table.php"
+
 ---for resource--
 php artisan make:filament-resource Role
 for running generate resource:
 composer require doctrine/dbal --dev (only for filament v2)
+
 if there is table by following command all field will be assigned automatically
 php artisan make:filament-resource Permission --generate
 $ php artisan make:filament-resource Employee --generate --view
@@ -26,8 +29,23 @@ php artisan make:policy UserPolicy --model=User
 
 ---get all access for super admin---
 https://spatie.be/index.php/docs/laravel-permission/v6/basic-usage/super-admin
+
 --make new panel--
 php artisan make:filament-panel app
+
+--make widgets--
+composer require filament/widgets:"^3.2" -W
+php artisan filament:install --widgets
+php artisan make:filament-widget StatsAdminOverview --stats-overview
+php artisan make:filament-widget StatsAppOverview --stats-overview
+
+--dynamic chart--
+https://github.com/Flowframe/laravel-trend
+composer require flowframe/laravel-trend
+php artisan make:filament-widget UserAdminChart --chart
+
+---dashboard table---
+php artisan make:filament-widget LatestAdminUsers --table
 
 --delete packeage from laravel--
 Remove declaration from file composer.json (in the "require" section)

@@ -16,14 +16,10 @@ class Team extends Model
     {
         return $this->hasMany(User::class);
     }
-    public function employees(): HasMany
-    {
-        return $this->hasMany(Employee::class);
-    }
 
-    public function departments(): HasMany
+    public function customers(): HasMany
     {
-        return $this->hasMany(Employee::class);
+        return $this->hasMany(Customer::class);
     }
 
     public function members(): BelongsToMany
