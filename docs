@@ -54,3 +54,19 @@ Remove any references to the package from my code :-)
 composer update
 composer dump-autoload
 
+---clear cache filament---
+php artisan filament:clear-cached-components
+
+ ----for cache data on database----
+ https://www.youtube.com/watch?v=2dhgWa5AiXo&list=PLbC4KRSNcMnrY78JyoI8c0pk-reuSw8ff&index=101
+ php artisan cache:table
+
+ --after deploy command--
+ php artisan config:cache
+ php artisan route:cache
+ php artisan optimize
+ composer dump-autoload -o
+ php artisan view:cache
+
+
+
